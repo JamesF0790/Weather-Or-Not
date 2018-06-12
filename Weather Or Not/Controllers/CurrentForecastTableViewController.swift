@@ -21,7 +21,7 @@ class CurrentForecastTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+//        updateUI()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,12 +42,12 @@ class CurrentForecastTableViewController: UITableViewController {
 
 }
 
-extension CurrentForecastTableViewController {
-    func updateUI() {
-        cityNameLabel.text = city!.city.name
-        temperatureLabel.text = city!.forecast.current.temp
-        summaryLabel.text = city!.forecast.current.summary
-        bearingLabel.text = city!.forecast.current.windBearing
-        speedLabel.text = city!.forecast.current.windSpeed
-    }
-}
+//extension CurrentForecastTableViewController {
+//    func updateUI() {
+//        cityNameLabel.text = city!.city.name
+//        temperatureLabel.text = city!.forecast.currently.temperature
+//        summaryLabel.text = city!.forecast.currently.summary
+//        bearingLabel.text = city!.forecast.currently.windBearing
+//        speedLabel.text = city!.forecast.currently.windSpeed
+//    }
+//}

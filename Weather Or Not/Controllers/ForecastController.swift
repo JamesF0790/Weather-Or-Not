@@ -27,38 +27,18 @@ struct ForecastController {
         }
 
         print (url)
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            let decoder = JSONDecoder()
-//
-//            if let data = data, let forecast = try? decoder.decode(Forecast.self, from: data) {
-//                completion (forecast)
-//
-//            } else {
-//                print ("Could not retrieve forecast, either not data was returned or data was not serialized")
-//                completion (nil)
-//                return
-//            }
-//        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data,
-                let rawJSON = try? JSONSerialization.jsonObject(with: data),
-                let json = rawJSON as? [String: Any],
-                let currentArray = json["currently"] as? [String: Any],
-                let dailyArray = json["daily"] as? [String: Any],
-                let dailyArrays = dailyArray["data"] as? [String: Any]
-                {
-                    let currentForecast = CurrentForecast(json: currentArray)!
-                    let dailyForecast = DailyForecasts(json: dailyArray)!
-                    let forecast = Forecast(current: currentForecast, daily: dailyForecast)
-                    completion(forecast)
-                    
-            } else {
-                print ("Could not retrieve forecast")
-                completion (nil)
-                return
-            }
-        }
         
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let decoder = JSONDecoder()
+            guard let data = data else {return}
+            let forecast = try? decoder.decode(Forecast.self, from: data)
+            let string = String(data: data, encoding: .utf8)
+            print (data)
+            print (string)
+            print (forecast)
+
+        }
+
         task.resume()
     }
 }
