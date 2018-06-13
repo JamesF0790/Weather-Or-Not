@@ -47,8 +47,6 @@ class CityTableViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         let city = cities[(indexPath?.row)!]
         vc.city = city
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
 

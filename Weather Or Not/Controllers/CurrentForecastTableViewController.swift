@@ -21,12 +21,7 @@ class CurrentForecastTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        updateUI()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        updateUI()
     }
 
     
@@ -42,12 +37,12 @@ class CurrentForecastTableViewController: UITableViewController {
 
 }
 
-//extension CurrentForecastTableViewController {
-//    func updateUI() {
-//        cityNameLabel.text = city!.city.name
-//        temperatureLabel.text = city!.forecast.currently.temperature
-//        summaryLabel.text = city!.forecast.currently.summary
-//        bearingLabel.text = city!.forecast.currently.windBearing
-//        speedLabel.text = city!.forecast.currently.windSpeed
-//    }
-//}
+extension CurrentForecastTableViewController {
+    func updateUI() {
+        cityNameLabel.text = city!.city.name
+        temperatureLabel.text = String(city!.forecast.currently.temperature)
+        summaryLabel.text = city!.forecast.currently.summary
+        bearingLabel.text = String(city!.forecast.currently.windBearing)
+        speedLabel.text = String(city!.forecast.currently.windSpeed)
+    }
+}

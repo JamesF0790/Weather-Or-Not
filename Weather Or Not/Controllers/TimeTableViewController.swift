@@ -15,13 +15,8 @@ class TimeTableViewController: UITableViewController {
     let forecastController = ForecastController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = city!.name
         getForecast()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     
@@ -29,8 +24,6 @@ class TimeTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "Current" {
             let vc = segue.destination as! CurrentForecastTableViewController
             let forecastedCity = ForecastedCity(city: city!, forecast: forecast!)
@@ -44,12 +37,11 @@ class TimeTableViewController: UITableViewController {
 extension TimeTableViewController {
     func getForecast() {
         let query = [
-            "exclude": "minutely,hourly,flags,alerts"
+            "exclude": "minutely,hourly,flags,alerts",
+            "units": "si"
         ]
         forecastController.fetchForecast(at: city!, matching: query) { (forecast) in
-            
             DispatchQueue.main.async {
-                
                 if let forecast = forecast {
                     self.forecast = forecast
                 } else {

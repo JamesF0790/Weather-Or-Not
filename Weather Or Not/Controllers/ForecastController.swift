@@ -19,26 +19,19 @@ struct ForecastController {
             print("Could not set city")
             return
         }
-        print (cityURL)
+        
         guard let url = cityURL.withQueries(query) else {
             completion (nil)
             print ("Could not set queries")
             return
         }
 
-        print (url)
-        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             let decoder = JSONDecoder()
-            guard let data = data else {return}
-            let forecast = try? decoder.decode(Forecast.self, from: data)
-            let string = String(data: data, encoding: .utf8)
-            print (data)
-            print (string)
-            print (forecast)
-
+            if let data = data, let forecast = try? decoder.decode(Forecast.self, from: data) {
+                completion(forecast)
+            }
         }
-
         task.resume()
     }
 }
