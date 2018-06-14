@@ -1,10 +1,3 @@
-//
-//  CurrentForecastTableViewController.swift
-//  Weather Or Not
-//
-//  Created by James Frost on 11/6/18.
-//  Copyright © 2018 James Frost. All rights reserved.
-//
 
 import UIKit
 
@@ -21,7 +14,8 @@ class CurrentForecastTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        guard let city = city else {fatalError("No Forecasted City")}
+        updateUI(city: city)
         tableView.separatorStyle = .none
     }
 
@@ -39,12 +33,15 @@ class CurrentForecastTableViewController: UITableViewController {
 }
 
 extension CurrentForecastTableViewController {
-    func updateUI() {
-        cityNameLabel.text = city!.city.name
-        temperatureLabel.text = "\(city!.forecast.currently.temperature)°c"
-        summaryLabel.text = city!.forecast.currently.summary
-        bearingLabel.text = "\(city!.forecast.currently.windBearing)°"
-        speedLabel.text = "\(city!.forecast.currently.windSpeed)m/s"
-        weatherImageView.image = UIImage(named: city!.forecast.currently.icon)
+    func updateUI(city: ForecastedCity) {
+        let forecast = city.forecast, city = city.city
+        DispatchQueue.main.async {
+            self.cityNameLabel.text = city.name
+            self.temperatureLabel.text = "Temperature:\(forecast.currently.temperature)°c"
+            self.summaryLabel.text = forecast.currently.summary
+            self.bearingLabel.text = "Wind Bearing:\(forecast.currently.windBearing)°"
+            self.speedLabel.text = "Wind Speed:\(forecast.currently.windSpeed)m/s"
+            self.weatherImageView.image = UIImage(named: forecast.currently.icon)
+        }
     }
 }

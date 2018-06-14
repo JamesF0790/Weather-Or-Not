@@ -27,5 +27,13 @@ struct DailyForecast: Codable {
     let windBearing: Int
     let windSpeed: Double
     let icon: String
+}
+
+extension DailyForecast {
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
 }

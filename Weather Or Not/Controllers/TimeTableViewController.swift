@@ -1,10 +1,3 @@
-//
-//  TimeTableViewController.swift
-//  Weather Or Not
-//
-//  Created by James Frost on 11/6/18.
-//  Copyright © 2018 James Frost. All rights reserved.
-//
 
 import UIKit
 
@@ -17,6 +10,7 @@ class TimeTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = city!.name
         getForecast()
+        tableView.separatorStyle = .none
     }
 
     
@@ -42,18 +36,18 @@ class TimeTableViewController: UITableViewController {
 }
 
 extension TimeTableViewController {
+
     func getForecast() {
+        guard let city = city else {fatalError("No City!")}
         let query = [
             "exclude": "minutely,hourly,flags,alerts",
             "units": "si"
         ]
-        forecastController.fetchForecast(at: city!, matching: query) { (forecast) in
-            DispatchQueue.main.async {
-                if let forecast = forecast {
-                    self.forecast = forecast
-                } else {
-                    print ("Unable to load data")
-                }
+        forecastController.fetchForecast(at: city, matching: query) { (forecast) in
+            if let forecast = forecast {
+                self.forecast = forecast
+            } else {
+                print("Unable to laod data")
             }
         }
     }
