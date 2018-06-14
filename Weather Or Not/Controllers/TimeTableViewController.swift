@@ -24,7 +24,8 @@ class TimeTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let forecastedCity = ForecastedCity(city: city!, forecast: forecast!)
+        guard let city = city, let forecast = forecast else {fatalError("Whoops")}
+        let forecastedCity = ForecastedCity(city: city, forecast: forecast)
         if segue.identifier == "Current" {
             let vc = segue.destination as! CurrentForecastTableViewController
             vc.city = forecastedCity

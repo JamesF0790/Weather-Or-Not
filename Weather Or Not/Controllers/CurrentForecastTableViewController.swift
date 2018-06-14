@@ -22,6 +22,7 @@ class CurrentForecastTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        tableView.separatorStyle = .none
     }
 
     
@@ -40,9 +41,10 @@ class CurrentForecastTableViewController: UITableViewController {
 extension CurrentForecastTableViewController {
     func updateUI() {
         cityNameLabel.text = city!.city.name
-        temperatureLabel.text = String(city!.forecast.currently.temperature)
+        temperatureLabel.text = "\(city!.forecast.currently.temperature)°c"
         summaryLabel.text = city!.forecast.currently.summary
-        bearingLabel.text = String(city!.forecast.currently.windBearing)
-        speedLabel.text = String(city!.forecast.currently.windSpeed)
+        bearingLabel.text = "\(city!.forecast.currently.windBearing)°"
+        speedLabel.text = "\(city!.forecast.currently.windSpeed)m/s"
+        weatherImageView.image = UIImage(named: city!.forecast.currently.icon)
     }
 }
