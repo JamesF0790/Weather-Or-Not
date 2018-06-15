@@ -27,7 +27,7 @@ class TimeTableViewController: UITableViewController {
             let vc = segue.destination as! DayForecastTableViewController
             vc.city = forecastedCity
         } else if segue.identifier == "7Day" {
-            let vc = segue.destination as! WeekForecastTableViewController
+            let vc = segue.destination as! SevenDayTableViewController
             vc.city = forecastedCity
         }
     }
