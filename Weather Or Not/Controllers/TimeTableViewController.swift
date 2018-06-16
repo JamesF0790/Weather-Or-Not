@@ -28,18 +28,21 @@ class TimeTableViewController: UITableViewController {
             vc.city = forecastedCity
             if favouriteSet {
                 //Pass on the favourite here
+                favouriteSet = false
             }
         } else if segue.identifier == "24Hour" {
             let vc = segue.destination as! DayForecastTableViewController
             vc.city = forecastedCity
             if favouriteSet {
                 //Pass on the favourite here
+                favouriteSet = false
             }
         } else if segue.identifier == "7Day" {
             let vc = segue.destination as! SevenDayTableViewController
             vc.city = forecastedCity
             if favouriteSet {
                 //Pass on the favourite here
+                favouriteSet = false
             }
         }
     }
