@@ -4,12 +4,17 @@ import UIKit
 
 class CityTableViewController: UITableViewController {
 
+    var firstDisplay = true
     var cities = [City]()
+    var favourite: FavouriteForecast?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cities = City.loadCities()
-
+        checkForFavourite()
+        if favourite != nil {
+            performSegue(withIdentifier: "Favourite", sender: nil)
+        }
     }
 
     // MARK: - Table view data source
@@ -41,7 +46,20 @@ class CityTableViewController: UITableViewController {
         let indexPath = tableView.indexPathForSelectedRow
         let city = cities[(indexPath?.row)!]
         vc.city = city
+        
+        if segue.identifier == "Favourite" { // Consider replacing with boolean check before submitting
+            vc.favourite = favourite
+            vc.favouriteSet = true
+        }
     }
     
+}
 
+extension CityTableViewController {
+    func checkForFavourite() {
+        guard let savedFave = FavouriteForecast.loadFavourite() else {return}
+        favourite = savedFave
+        guard firstDisplay == true && favourite!.active == true else {return}
+        firstDisplay = false
+    }
 }

@@ -6,11 +6,14 @@ class TimeTableViewController: UITableViewController {
     var city: City?
     var forecast: Forecast?
     let forecastController = ForecastController()
+    var favourite: FavouriteForecast?
+    var favouriteSet = false
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = city!.name
-        getForecast()
         tableView.separatorStyle = .none
+        getForecast() // Consider putting this in the segue so you can't accidentaly crash by tapping too fast.
+        checkForFavourite()
     }
 
     
@@ -23,12 +26,21 @@ class TimeTableViewController: UITableViewController {
         if segue.identifier == "Current" {
             let vc = segue.destination as! CurrentForecastTableViewController
             vc.city = forecastedCity
+            if favouriteSet {
+                //Pass on the favourite here
+            }
         } else if segue.identifier == "24Hour" {
             let vc = segue.destination as! DayForecastTableViewController
             vc.city = forecastedCity
+            if favouriteSet {
+                //Pass on the favourite here
+            }
         } else if segue.identifier == "7Day" {
             let vc = segue.destination as! SevenDayTableViewController
             vc.city = forecastedCity
+            if favouriteSet {
+                //Pass on the favourite here
+            }
         }
     }
     
@@ -49,6 +61,12 @@ extension TimeTableViewController {
             } else {
                 print("Unable to laod data")
             }
+        }
+    }
+    func checkForFavourite() {
+        if favouriteSet {
+            guard let favourite = favourite else {return}
+            performSegue(withIdentifier: favourite.forecast, sender: nil)
         }
     }
 }

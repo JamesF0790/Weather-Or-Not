@@ -35,5 +35,27 @@ extension DailyForecast {
         formatter.dateStyle = .medium
         return formatter
     }()
+}
+struct FavouriteForecast: Codable {
+    
+    let active: Bool
+    let city: City
+    let forecast: String
+    
+}
 
+extension FavouriteForecast {
+    static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let archiveURL = documentsDirectory.appendingPathComponent("favourite").appendingPathExtension("plist")
+    
+    static func saveFavourite(_ favourite: FavouriteForecast) {
+        let propertyListEncoder = PropertyListEncoder()
+        let codedFavourite = try? propertyListEncoder.encode(favourite)
+        try? codedFavourite?.write(to: archiveURL, options: .noFileProtection)
+    }
+    static func loadFavourite() -> FavouriteForecast? {
+        let propertyListDecoder = PropertyListDecoder()
+        guard let codedFavourite = try? Data(contentsOf: archiveURL) else {return nil}
+        return try? propertyListDecoder.decode(FavouriteForecast.self, from: codedFavourite)
+    }
 }

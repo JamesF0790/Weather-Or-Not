@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct City: Comparable {
+struct City: Comparable, Codable {
     let name: String
     let latitude: Double
     let longitude: Double
