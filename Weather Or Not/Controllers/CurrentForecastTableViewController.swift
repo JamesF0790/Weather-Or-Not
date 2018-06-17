@@ -4,7 +4,7 @@ import UIKit
 class CurrentForecastTableViewController: UITableViewController {
 
     var city: ForecastedCity?
-    
+    var favourite: FavouriteForecast?
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!

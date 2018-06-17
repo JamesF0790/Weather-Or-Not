@@ -11,7 +11,7 @@ import UIKit
 class SevenDayTableViewController: UITableViewController {
 
     var city: ForecastedCity?
-    
+    var favourite: FavouriteForecast?
     override func viewDidLoad() {
         super.viewDidLoad()
 

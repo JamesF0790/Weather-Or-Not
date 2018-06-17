@@ -36,7 +36,7 @@ extension DailyForecast {
         return formatter
     }()
 }
-struct FavouriteForecast: Codable {
+struct FavouriteForecast: Codable, Equatable {
     
     let active: Bool
     let city: City

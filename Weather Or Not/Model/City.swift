@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct City: Comparable, Codable {
+struct City: Comparable, Codable, Equatable {
     let name: String
     let latitude: Double
     let longitude: Double
@@ -10,6 +10,9 @@ struct City: Comparable, Codable {
     static func < (lhs: City, rhs: City) -> Bool {
         return lhs.name < rhs.name
     }
+//    static func == (lhs: City, rhs: City) -> Bool{
+//        return lhs.name == rhs.name && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+//    }
 }
 
 extension City {
@@ -24,7 +27,7 @@ extension City {
             City(name: "Jerusalem", latitude: 31.7683, longitude: 35.2137),
             City(name: "Ottowa", latitude: 45.4215, longitude: -75.6971),
             City(name: "Mexico City", latitude: 19.4326, longitude: -99.1332),
-            City(name: "Aukland", latitude: -36.8484, longitude: 174.7633),
+            City(name: "Auckland", latitude: -36.8484, longitude: 174.7633),
             City(name: "Beijing", latitude: 39.9042, longitude: 116.407396),
             City(name: "Honolulu", latitude: 21.3069, longitude: -157.8583),
             City(name: "Washington DC", latitude: 38.9071, longitude: -77.0368),
