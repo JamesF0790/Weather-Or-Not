@@ -99,12 +99,12 @@
 		2BAAAAC920CDAE4A00D5277B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */,
-				2B3395CB20CE571700524904 /* CurrentForecastTableViewController.swift */,
-				2BAAAAC720CDACEC00D5277B /* TimeTableViewController.swift */,
 				2B2F764720CD89D2001735D8 /* CityTableViewController.swift */,
-				2BAAAACA20CDB32300D5277B /* ForecastController.swift */,
+				2BAAAAC720CDACEC00D5277B /* TimeTableViewController.swift */,
+				2B3395CB20CE571700524904 /* CurrentForecastTableViewController.swift */,
+				2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */,
 				2BD49F8420D3337D004E6138 /* SevenDayTableViewController.swift */,
+				2BAAAACA20CDB32300D5277B /* ForecastController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

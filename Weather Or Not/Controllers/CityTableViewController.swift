@@ -13,7 +13,9 @@ class CityTableViewController: UITableViewController {
         cities = City.loadCities()
         checkForFavourite()
         if favourite != nil {
-            performSegue(withIdentifier: "Favourite", sender: nil)
+            if favourite?.active == true {
+                performSegue(withIdentifier: favourite!.forecast, sender: nil)
+            }
         }
     }
 
@@ -32,25 +34,38 @@ class CityTableViewController: UITableViewController {
 
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
+//
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! TimeTableViewController
-        let indexPath = tableView.indexPathForSelectedRow
-        let city = cities[(indexPath?.row)!]
-        vc.city = city
-        
-        if segue.identifier == "Favourite" { // Consider replacing with boolean check before submitting
+        switch segue.identifier {
+        case "Current":
+            let vc = segue.destination as! CurrentForecastTableViewController
+            vc.city = favourite!.city
+            
             vc.favourite = favourite
-            vc.favouriteSet = true
+        case "24Hour":
+            let vc = segue.destination as! DayForecastTableViewController
+            vc.city = favourite!.city
+            
+            vc.favourite = favourite
+        case "7Day":
+            let vc = segue.destination as! SevenDayTableViewController
+            vc.city = favourite!.city
+            
+            vc.favourite = favourite
+        default:
+            let vc = segue.destination as! TimeTableViewController
+            vc.city = cities[(tableView.indexPathForSelectedRow?.row)!]
+            
         }
+
     }
     
 }

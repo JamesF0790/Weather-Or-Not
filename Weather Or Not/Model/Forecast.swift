@@ -38,9 +38,9 @@ extension DailyForecast {
 }
 struct FavouriteForecast: Codable, Equatable {
     
-    let active: Bool
-    let city: City
-    let forecast: String
+    var active: Bool
+    var city: City
+    var forecast: String
     
 }
 
@@ -57,5 +57,14 @@ extension FavouriteForecast {
         let propertyListDecoder = PropertyListDecoder()
         guard let codedFavourite = try? Data(contentsOf: archiveURL) else {return nil}
         return try? propertyListDecoder.decode(FavouriteForecast.self, from: codedFavourite)
+    }
+}
+
+extension FavouriteForecast {
+    static func == (lhs: FavouriteForecast, rhs: FavouriteForecast) -> Bool {
+        return lhs.city == rhs.city && lhs.forecast == rhs.forecast
+    }
+    static func != (lhs: FavouriteForecast, rhs: FavouriteForecast) -> Bool {
+        return lhs.city != rhs.city && lhs.forecast != rhs.forecast
     }
 }
