@@ -166,11 +166,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAo-1m-oxq">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAo-1m-oxq" customClass="FavouriteButton" customModule="Weather_Or_Not" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="6" width="160" height="30"/>
                                                     <state key="normal" title="Favourite"/>
                                                     <connections>
-                                                        <action selector="favouriteButtonTapped:" destination="s4c-QQ-2AY" eventType="touchUpInside" id="a63-SE-rbz"/>
+                                                        <action selector="favouriteButtonTapped:" destination="s4c-QQ-2AY" eventType="touchUpInside" id="gY6-aD-bnE"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -318,7 +318,7 @@
                     <connections>
                         <outlet property="bearingLabel" destination="PPN-g1-ORG" id="86l-eQ-0D7"/>
                         <outlet property="cityNameLabel" destination="7bv-C9-qnZ" id="3Yt-1K-jEp"/>
-                        <outlet property="favouriteButton" destination="iAo-1m-oxq" id="GYH-xX-Bcs"/>
+                        <outlet property="favouriteButton" destination="iAo-1m-oxq" id="jHC-82-DuN"/>
                         <outlet property="speedLabel" destination="P7b-lv-dPQ" id="EZT-cU-18d"/>
                         <outlet property="summaryLabel" destination="Tgc-Qp-03q" id="DVc-9f-PtE"/>
                         <outlet property="temperatureLabel" destination="gTN-zR-I5N" id="mya-cC-RHE"/>
@@ -327,7 +327,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAq-64-nzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="249" y="-702"/>
+            <point key="canvasLocation" x="247.5" y="-702.46478873239437"/>
         </scene>
         <!--Day Forecast Table View Controller-->
         <scene sceneID="7LA-oS-QTr">
@@ -347,13 +347,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-fu-pKg">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-fu-pKg" customClass="FavouriteButton" customModule="Weather_Or_Not" customModuleProvider="target">
                                                     <rect key="frame" x="164" y="6" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="favouriteButtonTapped:" destination="39B-hb-WVp" eventType="touchUpInside" id="Dsy-Gu-oeP"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -535,7 +532,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLI-fX-iUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1583" y="-40"/>
+            <point key="canvasLocation" x="1582.5" y="-40.140845070422536"/>
         </scene>
         <!--Seven Day Table View Controller-->
         <scene sceneID="08h-lz-eUC">

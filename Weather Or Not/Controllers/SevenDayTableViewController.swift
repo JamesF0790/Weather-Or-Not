@@ -49,9 +49,8 @@ class SevenDayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "daily", for: indexPath) as! DailyTableViewCell
         if let forecast = forecast?.daily.data[indexPath.row] {
-            let date = NSDate(timeIntervalSince1970: forecast.time)
             DispatchQueue.main.async {
-                cell.dateLabel.text = DailyForecast.dateFormatter.string(from: date as Date)
+                cell.dateLabel.text = forecast.stringTime
                 cell.summaryLabel.text = forecast.summary
                 cell.weatherImage.image = UIImage(named: forecast.icon)
                 cell.highTemperatureLabel.text = "High: \(forecast.temperatureHigh)"

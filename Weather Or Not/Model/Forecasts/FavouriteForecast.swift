@@ -1,47 +1,17 @@
-import UIKit
+//
+//  FavouriteForecast.swift
+//  Weather Or Not
+//
+//  Created by James Frost on 28/6/18.
+//  Copyright © 2018 James Frost. All rights reserved.
+//
 
-struct Forecast: Codable {
-    let currently: CurrentForecast
-    let daily: DailyForecasts
-    
-}
-struct CurrentForecast: Codable {
-    let temperature: Double
-    let summary: String
-    let icon: String
-    let windBearing: Int
-    let windSpeed: Double
-    
-}
-struct DailyForecasts: Codable{
-    let summary: String
-    let icon: String
-    let data: [DailyForecast]
+import Foundation
 
-}
-struct DailyForecast: Codable {
-    let time: Double
-    let summary: String
-    let temperatureHigh: Double
-    let temperatureLow: Double
-    let windBearing: Int
-    let windSpeed: Double
-    let icon: String
-}
-
-extension DailyForecast {
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-}
-struct FavouriteForecast: Codable, Equatable {
-    
+struct FavouriteForecast: Codable {
     var active: Bool
     var city: City
     var forecast: String
-    
 }
 
 extension FavouriteForecast {
@@ -60,7 +30,7 @@ extension FavouriteForecast {
     }
 }
 
-extension FavouriteForecast {
+extension FavouriteForecast: Equatable {
     static func == (lhs: FavouriteForecast, rhs: FavouriteForecast) -> Bool {
         return lhs.city == rhs.city && lhs.forecast == rhs.forecast
     }

@@ -19,12 +19,10 @@ class DayForecastTableViewController: UITableViewController {
         getForecast()
         tableView.separatorStyle = .none
     }
-
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }
 
 extension DayForecastTableViewController {
@@ -38,10 +36,9 @@ extension DayForecastTableViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         forecastController.fetchForecast(at: city, matching: query) { (forecast) in
             if let forecast = forecast?.daily.data[0] {
-               let date = NSDate(timeIntervalSince1970: forecast.time)
                 DispatchQueue.main.async {
                     self.cityNameLabel.text = city.name
-                    self.dateLabel.text = DailyForecast.dateFormatter.string(from: date as Date)
+                    self.dateLabel.text = forecast.stringTime
                     self.weatherImageLabel.image = UIImage(named: forecast.icon)
                     self.highTemperatureLabel.text = "High:\(forecast.temperatureHigh)°c"
                     self.lowTemperatureLabel.text = "Low:\(forecast.temperatureLow)°c"

@@ -3,41 +3,35 @@ import UIKit
 
 class CurrentForecastTableViewController: UITableViewController {
 
+    //MARK: Properties
     var city: City?
     var favourite: FavouriteForecast?
     let forecastController = ForecastController()
+    let favouriteManager = FavouriteManager()
     var forecast: Forecast?
     
+    //MARK: IBOutlets
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var bearingLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
-    @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var favouriteButton: FavouriteButton!
     
+    //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getForecast()
-        checkFavouriteButton()
+        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton )
         tableView.separatorStyle = .none
-        favouriteButton.layer.cornerRadius = 5
-        favouriteButton.layer.borderWidth = 1
-        favouriteButton.layer.borderColor = UIColor.blue.cgColor
     }
-    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
-        guard let city = city else {return}
-        let newFavourite = FavouriteForecast(active: true, city: city, forecast: "Current")
-        if favourite == newFavourite {
-            let favouriteState = !(favourite?.active)!
-            favourite?.active = favouriteState
-        } else {
-            favourite = newFavourite
-        }
-
-        UIView.animate(withDuration: 0.05, animations: {//Set this up in a seperate class for the button. 
+    //MARK IBActions
+    @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
+        UIView.animate(withDuration: 0.05, animations: {
+            
             let rotationTransform = CGAffineTransform(rotationAngle: 0.05)
-
+            
             sender.transform = rotationTransform
         }) { (_) in
             UIView.animate(withDuration: 0.05, animations: {
@@ -45,19 +39,23 @@ class CurrentForecastTableViewController: UITableViewController {
                 
                 sender.transform = rotationTransform
             }, completion: { (_) in
-                sender.transform = CGAffineTransform.identity
+                UIView.animate(withDuration: 0.05, animations: {
+                    sender.transform = CGAffineTransform.identity
+                })
             })
         }
-        FavouriteForecast.saveFavourite(favourite!)
-        checkFavouriteButton()
+        favouriteManager.updateFavourite(city: city!, forecastType: "Current")
+        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: sender)
     }
-    
+
+    //MARK: TableView
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
 
+//MARK: Helper Funcs
 extension CurrentForecastTableViewController {
 	 
     func getForecast() {
@@ -82,28 +80,5 @@ extension CurrentForecastTableViewController {
                 fatalError()
             }
         }
-    }
-    func checkFavouriteButton() {
-        guard let favourite = favourite else {return}
-        if favourite == FavouriteForecast.loadFavourite() {
-            if favourite.active {
-                favouriteButton.backgroundColor = .red
-                favouriteButton.setTitle("Unfavourite", for: .normal)
-                favouriteButton.setTitleColor(.white, for: .normal)
-            } else {
-                favouriteButton.backgroundColor = .green
-                favouriteButton.setTitleColor(.blue, for: .normal)
-                favouriteButton.setTitle("Favourite", for: .normal)
-            }
-        } else {
-            favouriteButton.backgroundColor = .green
-            favouriteButton.setTitleColor(.blue, for: .normal)
-            favouriteButton.setTitle("Favourite", for: .normal)
-        }
-//        if favourite == FavouriteForecast.loadFavourite() && favourite.active {
-//            return true
-//        } else {
-//            return false
-//        }
     }
 }

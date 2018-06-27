@@ -10,9 +10,6 @@ struct City: Comparable, Codable, Equatable {
     static func < (lhs: City, rhs: City) -> Bool {
         return lhs.name < rhs.name
     }
-//    static func == (lhs: City, rhs: City) -> Bool{
-//        return lhs.name == rhs.name && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
-//    }
 }
 
 extension City {
@@ -44,7 +41,3 @@ extension City {
     }
 }
 
-struct ForecastedCity {
-    let city: City
-    let forecast: Forecast
-}
