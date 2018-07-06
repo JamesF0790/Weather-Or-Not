@@ -14,11 +14,13 @@ class SevenDayTableViewController: UITableViewController {
     var favourite: FavouriteForecast?
     var forecast: Forecast?
     let forecastController = ForecastController()
+    let favouriteManager = FavouriteManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         getforecast()
     }
 
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 300
@@ -83,5 +85,29 @@ class SevenDayTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
+}
+
+extension SevenDayTableViewController: WeeklySummaryCellDelegate {
+    func favouriteTapped(sender: WeeklySummaryTableViewCell) {
+        UIView.animate(withDuration: 0.05, animations: {
+            
+            let rotationTransform = CGAffineTransform(rotationAngle: 0.05)
+            
+            sender.favouriteButton.transform = rotationTransform
+        }) { (_) in
+            UIView.animate(withDuration: 0.05, animations: {
+                let rotationTransform = CGAffineTransform(rotationAngle: -0.10)
+                
+                sender.favouriteButton.transform = rotationTransform
+            }, completion: { (_) in
+                UIView.animate(withDuration: 0.05, animations: {
+                    sender.favouriteButton.transform = CGAffineTransform.identity
+                })
+            })
+        }
+        favouriteManager.updateFavourite(city: city!, forecastType: "7Days")
+        sender.favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "7Days", button: sender.favouriteButton)
+    }
+    
 
 }

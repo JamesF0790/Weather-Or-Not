@@ -21,6 +21,7 @@ struct ForecastController {
 
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             let decoder = JSONDecoder()
+            print (error)
             if let data = data, let forecast = try? decoder.decode(Forecast.self, from: data) {
                 completion(forecast)
             }

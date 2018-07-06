@@ -27,9 +27,10 @@ class FavouriteManager {
     func updateButton(city: City, forecastType: String, button: FavouriteButton) -> FavouriteButton {
         let favourite = FavouriteForecast(active: true, city: city, forecast: forecastType)
         //Set up the button for the first two checks, making it green
+        
         button.backgroundColor = .green
         button.setTitle("Favourite", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.blue, for: .normal)
         
         guard let oldFavourite = FavouriteForecast.loadFavourite() else {return button}
         guard oldFavourite == favourite && oldFavourite.active else {return button}
@@ -37,6 +38,7 @@ class FavouriteManager {
         //If the checks passed set it to red and return it
         button.backgroundColor = .red
         button.setTitle("Unfavourite", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         
         return button
     }

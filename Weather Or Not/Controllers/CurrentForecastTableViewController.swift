@@ -26,7 +26,9 @@ class CurrentForecastTableViewController: UITableViewController {
         favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton )
         tableView.separatorStyle = .none
     }
+
     //MARK IBActions
+    
     @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
         UIView.animate(withDuration: 0.05, animations: {
             

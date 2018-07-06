@@ -347,12 +347,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-fu-pKg" customClass="FavouriteButton" customModule="Weather_Or_Not" customModuleProvider="target">
-                                                    <rect key="frame" x="164" y="6" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-fu-pKg" customClass="FavouriteButton" customModule="Weather_Or_Not" customModuleProvider="target">
+                                                    <rect key="frame" x="137" y="6" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="favouriteButtonTapped:" destination="wQb-cO-lRa" eventType="touchUpInside" id="6f8-0j-m31"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y4H-fu-pKg" firstAttribute="centerX" secondItem="lWK-dc-aBM" secondAttribute="centerX" id="nW9-kc-QrS"/>
+                                                <constraint firstItem="Y4H-fu-pKg" firstAttribute="centerY" secondItem="lWK-dc-aBM" secondAttribute="centerY" id="wsV-ZY-Siz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iqI-dh-0Ib">
@@ -362,14 +368,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24-Hour Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omc-oW-ErV">
-                                                    <rect key="frame" x="166" y="11" width="137" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24-Hour Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omc-oW-ErV">
+                                                    <rect key="frame" x="91.5" y="11" width="137" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="omc-oW-ErV" firstAttribute="centerX" secondItem="2hK-UU-RBa" secondAttribute="centerX" id="Rjg-rp-A7i"/>
+                                                <constraint firstItem="omc-oW-ErV" firstAttribute="centerY" secondItem="2hK-UU-RBa" secondAttribute="centerY" id="fMB-Zm-v8J"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iPJ-4R-RKm">
@@ -523,6 +532,7 @@
                     <connections>
                         <outlet property="cityNameLabel" destination="iWT-5h-eZQ" id="32o-J4-aCW"/>
                         <outlet property="dateLabel" destination="p7G-zI-qpB" id="Xbn-A4-JLS"/>
+                        <outlet property="favouriteButton" destination="Y4H-fu-pKg" id="UcI-qZ-7FW"/>
                         <outlet property="highTemperatureLabel" destination="WJl-41-8B0" id="v1P-D5-0qJ"/>
                         <outlet property="lowTemperatureLabel" destination="lzf-dW-kUC" id="KsN-A0-5OC"/>
                         <outlet property="weatherImageLabel" destination="Dmk-ws-wGt" id="0Hc-57-Xcy"/>
@@ -556,9 +566,12 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kWg-an-hV2">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-fB-Qrm">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-fB-Qrm" customClass="FavouriteButton" customModule="Weather_Or_Not" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                                             <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="favouriteButtonTapped:" destination="pJJ-GL-IbS" eventType="touchUpInside" id="gRs-Rn-NrF"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seven Day Forecast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywb-7N-EMh">
                                                             <rect key="frame" x="0.0" y="59" width="320" height="40"/>

@@ -34,7 +34,8 @@ extension City {
             City(name: "Dallas", latitude: 32.7766, longitude: -96.7969),
             City(name: "Vienna", latitude: 48.2081, longitude: 16.3738),
             City(name: "Canberra", latitude: -35.2809, longitude: 149.1300),
-            City(name: "Baghdad", latitude: 33.3128, longitude: 44.3614)
+            City(name: "Baghdad", latitude: 33.3128, longitude: 44.3614),
+            City(name: "Fake", latitude: 12341, longitude: 1243)
         ]
         let sortedCities = cities.sorted(by: <)
         return sortedCities

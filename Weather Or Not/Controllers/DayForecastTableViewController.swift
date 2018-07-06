@@ -6,6 +6,8 @@ class DayForecastTableViewController: UITableViewController {
     var city: City?
     var favourite: FavouriteForecast?
     let forecastController = ForecastController()
+    let favouriteManager = FavouriteManager()
+    
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImageLabel: UIImageView!
@@ -13,11 +15,33 @@ class DayForecastTableViewController: UITableViewController {
     @IBOutlet weak var lowTemperatureLabel: UILabel!
     @IBOutlet weak var windBearingLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var favouriteButton: FavouriteButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getForecast()
         tableView.separatorStyle = .none
+    }
+    @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
+        UIView.animate(withDuration: 0.05, animations: {
+            
+            let rotationTransform = CGAffineTransform(rotationAngle: 0.05)
+            
+            sender.transform = rotationTransform
+        }) { (_) in
+            UIView.animate(withDuration: 0.05, animations: {
+                let rotationTransform = CGAffineTransform(rotationAngle: -0.10)
+                
+                sender.transform = rotationTransform
+            }, completion: { (_) in
+                UIView.animate(withDuration: 0.05, animations: {
+                    sender.transform = CGAffineTransform.identity
+                })
+            })
+        }
+        favouriteManager.updateFavourite(city: city!, forecastType: "24Hour")
+        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: sender)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
