@@ -33,6 +33,7 @@ class SevenDayTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "weekly") as! WeeklySummaryTableViewCell
         headerCell.backgroundColor = .white
+        headerCell.delegate = self
 
         if let forecast = forecast?.daily, let city = city {
             DispatchQueue.main.async {
