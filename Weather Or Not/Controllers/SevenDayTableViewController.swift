@@ -15,6 +15,9 @@ class SevenDayTableViewController: UITableViewController {
     var forecast: Forecast?
     let forecastController = ForecastController()
     let favouriteManager = FavouriteManager()
+    
+    @IBOutlet var weekTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getforecast()
@@ -34,9 +37,9 @@ class SevenDayTableViewController: UITableViewController {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "weekly") as! WeeklySummaryTableViewCell
         headerCell.backgroundColor = .white
         headerCell.delegate = self
-
         if let forecast = forecast?.daily, let city = city {
             DispatchQueue.main.async {
+                headerCell.favouriteButton = self.favouriteManager.updateButton(city: city, forecastType: "7Day", button: headerCell.favouriteButton)
                 headerCell.cityLabel.text = city.name
                 headerCell.weatherImage.image = UIImage(named: forecast.icon)
                 headerCell.weatherLabel.text = forecast.summary
@@ -82,7 +85,23 @@ class SevenDayTableViewController: UITableViewController {
         ]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         forecastController.fetchForecast(at: city, matching: query) { (forecast) in
-            self.forecast = forecast
+            if forecast != nil {
+                self.forecast = forecast
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } else {
+                let alertController = UIAlertController(title: "Could not fetch forecast", message: "An error has occured and the forecast could not be fetched. Please try again", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Okay", style: .default, handler: { (_) in
+                    self.performSegue(withIdentifier: "timeUnwind", sender: self)
+                })
+                
+                alertController.addAction(okAction)
+                alertController.popoverPresentationController?.sourceView = self.weekTableView
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
         tableView.reloadData()
     }
@@ -96,7 +115,7 @@ extension SevenDayTableViewController: WeeklySummaryCellDelegate {
             
             sender.favouriteButton.transform = rotationTransform
         }) { (_) in
-            UIView.animate(withDuration: 0.05, animations: {
+            UIView.animate(withDuration: 0.10, animations: {
                 let rotationTransform = CGAffineTransform(rotationAngle: -0.10)
                 
                 sender.favouriteButton.transform = rotationTransform
@@ -106,8 +125,8 @@ extension SevenDayTableViewController: WeeklySummaryCellDelegate {
                 })
             })
         }
-        favouriteManager.updateFavourite(city: city!, forecastType: "7Days")
-        sender.favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "7Days", button: sender.favouriteButton)
+        favouriteManager.updateFavourite(city: city!, forecastType: "7Day")
+        sender.favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "7Day", button: sender.favouriteButton)
     }
     
 

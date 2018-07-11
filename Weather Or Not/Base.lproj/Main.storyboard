@@ -323,9 +323,11 @@
                         <outlet property="summaryLabel" destination="Tgc-Qp-03q" id="DVc-9f-PtE"/>
                         <outlet property="temperatureLabel" destination="gTN-zR-I5N" id="mya-cC-RHE"/>
                         <outlet property="weatherImageView" destination="1hW-eH-VKF" id="ESk-yq-gie"/>
+                        <segue destination="Viy-Mi-L9d" kind="unwind" identifier="timeUnwind" unwindAction="unwindToTimeVCWithSegue:" id="eMG-Tp-90w"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAq-64-nzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Viy-Mi-L9d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="247.5" y="-702.46478873239437"/>
         </scene>
@@ -538,9 +540,11 @@
                         <outlet property="weatherImageLabel" destination="Dmk-ws-wGt" id="0Hc-57-Xcy"/>
                         <outlet property="windBearingLabel" destination="Cgm-k7-1lJ" id="sYZ-Ww-Q2C"/>
                         <outlet property="windSpeedLabel" destination="3sk-Ol-RQn" id="fCj-m2-oXF"/>
+                        <segue destination="2Zo-Rp-QZc" kind="unwind" identifier="timeUnwind" unwindAction="unwindToTimeVCWithSegue:" id="vSc-pk-lKE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLI-fX-iUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2Zo-Rp-QZc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1582.5" y="-40.140845070422536"/>
         </scene>
@@ -741,8 +745,13 @@
                             <outlet property="delegate" destination="U7e-m0-oB0" id="LtN-TY-bvT"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="weekTableView" destination="f6i-je-Rt3" id="e4O-7T-zko"/>
+                        <segue destination="W1G-lp-q8E" kind="unwind" identifier="timeUnwind" unwindAction="unwindToTimeVCWithSegue:" id="813-hQ-ETR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xwp-yc-gLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="W1G-lp-q8E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="248" y="806"/>
         </scene>

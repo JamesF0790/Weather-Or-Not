@@ -78,8 +78,17 @@ extension CurrentForecastTableViewController {
                     self.weatherImageView.image = UIImage(named: forecast.currently.icon)
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-            } else {
-                fatalError()
+            } else if forecast == nil {
+                let alertController = UIAlertController(title: "Could not fetch forecast", message: "An error has occured and the forecast could not be fetched. Please try again", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Okay", style: .default, handler: { (_) in
+                    self.performSegue(withIdentifier: "timeUnwind", sender: self)
+                })
+                
+                alertController.addAction(okAction)
+                alertController.popoverPresentationController?.sourceView = self.cityNameLabel
+                
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

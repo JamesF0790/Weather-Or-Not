@@ -22,6 +22,7 @@ class DayForecastTableViewController: UITableViewController {
         super.viewDidLoad()
         getForecast()
         tableView.separatorStyle = .none
+        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: favouriteButton)
     }
     @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
         UIView.animate(withDuration: 0.05, animations: {
@@ -70,9 +71,19 @@ extension DayForecastTableViewController {
                     self.windSpeedLabel.text = "Wind Speed:\(forecast.windSpeed)m/s"
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
+            } else if forecast == nil {
+                let alertController = UIAlertController(title: "Could not fetch forecast", message: "An error has occured and the forecast could not be fetched. Please try again", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Okay", style: .default, handler: { (_) in
+                    self.performSegue(withIdentifier: "timeUnwind", sender: self)
+                })
+                
+                alertController.addAction(okAction)
+                alertController.popoverPresentationController?.sourceView = self.cityNameLabel
+                
+                self.present(alertController, animated: true, completion: nil)
                 
             }
         }
-        
     }
 }
