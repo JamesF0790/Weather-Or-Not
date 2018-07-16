@@ -5,7 +5,7 @@ class DayForecastTableViewController: UITableViewController {
 
     var city: City?
     var favourite: FavouriteForecast?
-    let forecastController = ForecastController()
+    let forecastManager = ForecastManager()
     let favouriteManager = FavouriteManager()
     
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -17,13 +17,18 @@ class DayForecastTableViewController: UITableViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var favouriteButton: FavouriteButton!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getForecast()
         tableView.separatorStyle = .none
         favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: favouriteButton)
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getForecast()
+//        tableView.separatorStyle = .none
+//        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: favouriteButton)
+//    }
     @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
         UIView.animate(withDuration: 0.05, animations: {
             
@@ -59,7 +64,7 @@ extension DayForecastTableViewController {
             "units": "si"
         ]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        forecastController.fetchForecast(at: city, matching: query) { (forecast) in
+        forecastManager.fetchForecast(at: city, matching: query) { (forecast) in
             if let forecast = forecast?.daily.data[0] {
                 DispatchQueue.main.async {
                     self.cityNameLabel.text = city.name

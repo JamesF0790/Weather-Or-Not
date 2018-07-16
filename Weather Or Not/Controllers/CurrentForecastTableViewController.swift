@@ -6,7 +6,7 @@ class CurrentForecastTableViewController: UITableViewController {
     //MARK: Properties
     var city: City?
     var favourite: FavouriteForecast?
-    let forecastController = ForecastController()
+    let forecastManager = ForecastManager()
     let favouriteManager = FavouriteManager()
     var forecast: Forecast?
     
@@ -20,12 +20,18 @@ class CurrentForecastTableViewController: UITableViewController {
     @IBOutlet weak var favouriteButton: FavouriteButton!
     
     //MARK: LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getForecast()
-        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton )
+        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton)
         tableView.separatorStyle = .none
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getForecast()
+//        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton )
+//        tableView.separatorStyle = .none
+//    }
 
     //MARK IBActions
     
@@ -67,7 +73,7 @@ extension CurrentForecastTableViewController {
             "units": "si"
         ]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        forecastController.fetchForecast(at: city, matching: query) { (forecast) in
+        forecastManager.fetchForecast(at: city, matching: query) { (forecast) in
             if let forecast = forecast {
                 DispatchQueue.main.async {
                     self.cityNameLabel.text = city.name

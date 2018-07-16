@@ -13,15 +13,19 @@ class SevenDayTableViewController: UITableViewController {
     var city: City?
     var favourite: FavouriteForecast?
     var forecast: Forecast?
-    let forecastController = ForecastController()
+    let forecastManager = ForecastManager()
     let favouriteManager = FavouriteManager()
     
     @IBOutlet var weekTableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         getforecast()
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getforecast()
+//    }
 
     
     // MARK: - Table view data source
@@ -84,7 +88,7 @@ class SevenDayTableViewController: UITableViewController {
             "units": "si"
         ]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        forecastController.fetchForecast(at: city, matching: query) { (forecast) in
+        forecastManager.fetchForecast(at: city, matching: query) { (forecast) in
             if forecast != nil {
                 self.forecast = forecast
                 DispatchQueue.main.async {

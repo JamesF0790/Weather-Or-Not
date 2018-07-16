@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct ForecastController {
+struct ForecastManager {
     
     func fetchForecast (at city: City, matching query: [String: String], completion: @escaping (Forecast?) -> Void) {
         

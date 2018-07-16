@@ -26,7 +26,7 @@
 		2B9E951520D1CC4C00C5EDEB /* DayForecastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */; };
 		2BAA002D20D37919000D4E1A /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA002C20D37919000D4E1A /* DailyTableViewCell.swift */; };
 		2BAAAAC820CDACEC00D5277B /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAAAC720CDACEC00D5277B /* TimeTableViewController.swift */; };
-		2BAAAACB20CDB32300D5277B /* ForecastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAAACA20CDB32300D5277B /* ForecastController.swift */; };
+		2BAAAACB20CDB32300D5277B /* ForecastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAAACA20CDB32300D5277B /* ForecastManager.swift */; };
 		2BD49F8520D3337D004E6138 /* SevenDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD49F8420D3337D004E6138 /* SevenDayTableViewController.swift */; };
 		2BD49F8C20D3777D004E6138 /* WeeklySummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD49F8B20D3777D004E6138 /* WeeklySummaryTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +53,7 @@
 		2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecastTableViewController.swift; sourceTree = "<group>"; };
 		2BAA002C20D37919000D4E1A /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		2BAAAAC720CDACEC00D5277B /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
-		2BAAAACA20CDB32300D5277B /* ForecastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastController.swift; sourceTree = "<group>"; };
+		2BAAAACA20CDB32300D5277B /* ForecastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastManager.swift; sourceTree = "<group>"; };
 		2BD49F8420D3337D004E6138 /* SevenDayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenDayTableViewController.swift; sourceTree = "<group>"; };
 		2BD49F8B20D3777D004E6138 /* WeeklySummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +131,7 @@
 				2B3395CB20CE571700524904 /* CurrentForecastTableViewController.swift */,
 				2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */,
 				2BD49F8420D3337D004E6138 /* SevenDayTableViewController.swift */,
-				2BAAAACA20CDB32300D5277B /* ForecastController.swift */,
+				2BAAAACA20CDB32300D5277B /* ForecastManager.swift */,
 				2B6E7F2D20E40DB500EE144E /* FavouriteManager.swift */,
 			);
 			path = Controllers;
@@ -256,7 +256,7 @@
 				2B2F764420CD6AFA001735D8 /* City.swift in Sources */,
 				2B6E7F2820E409DD00EE144E /* DailyForecast.swift in Sources */,
 				2B3395CC20CE571700524904 /* CurrentForecastTableViewController.swift in Sources */,
-				2BAAAACB20CDB32300D5277B /* ForecastController.swift in Sources */,
+				2BAAAACB20CDB32300D5277B /* ForecastManager.swift in Sources */,
 				2BAA002D20D37919000D4E1A /* DailyTableViewCell.swift in Sources */,
 				2B2431C720E2479700DFCB3E /* FavouriteButton.swift in Sources */,
 				2B9E951520D1CC4C00C5EDEB /* DayForecastTableViewController.swift in Sources */,

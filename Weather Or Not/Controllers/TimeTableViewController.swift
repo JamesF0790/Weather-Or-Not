@@ -5,7 +5,7 @@ class TimeTableViewController: UITableViewController {
 
     var city: City?
     var forecast: Forecast?
-    let forecastController = ForecastController()
+    let forecastController = ForecastManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = city!.name
