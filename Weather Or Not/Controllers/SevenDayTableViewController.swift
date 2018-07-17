@@ -22,12 +22,8 @@ class SevenDayTableViewController: UITableViewController {
         super.viewWillAppear(true)
         getforecast()
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        getforecast()
-//    }
 
-    
+        
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 300

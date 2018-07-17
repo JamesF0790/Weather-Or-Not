@@ -23,12 +23,7 @@ class DayForecastTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: favouriteButton)
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        getForecast()
-//        tableView.separatorStyle = .none
-//        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "24Hour", button: favouriteButton)
-//    }
+
     @IBAction func favouriteButtonTapped(_ sender: FavouriteButton) {
         UIView.animate(withDuration: 0.05, animations: {
             

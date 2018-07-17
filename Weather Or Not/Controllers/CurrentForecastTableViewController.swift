@@ -26,12 +26,6 @@ class CurrentForecastTableViewController: UITableViewController {
         favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton)
         tableView.separatorStyle = .none
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        getForecast()
-//        favouriteButton = favouriteManager.updateButton(city: city!, forecastType: "Current", button: favouriteButton )
-//        tableView.separatorStyle = .none
-//    }
 
     //MARK IBActions
     
