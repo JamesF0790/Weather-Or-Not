@@ -45,9 +45,9 @@ class SevenDayTableViewController: UITableViewController {
                 headerCell.weatherLabel.text = forecast.summary
             }
         } else {
-            headerCell.cityLabel.text = "Loading"
+            headerCell.cityLabel.text = ""
             headerCell.weatherImage.image = nil
-            headerCell.weatherLabel.text = "Loading"
+            headerCell.weatherLabel.text = ""
         }
         return headerCell
     }
@@ -66,13 +66,14 @@ class SevenDayTableViewController: UITableViewController {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         } else {
-            cell.dateLabel.text = "Loading"
-            cell.summaryLabel.text = "Loading"
+            cell.dateLabel.text = ""
+            cell.summaryLabel.text = ""
             cell.weatherImage.image = nil
-            cell.highTemperatureLabel.text = "Loading"
-            cell.lowTemperatureLabel.text = "Loading"
-            cell.windBearingLabel.text = "Loading"
-            cell.windSpeedLabel.text = "Loading"
+            cell.highTemperatureLabel.text = ""
+            cell.lowTemperatureLabel.text = ""
+            cell.windBearingLabel.text = ""
+            cell.windSpeedLabel.text = ""
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
 
         return cell

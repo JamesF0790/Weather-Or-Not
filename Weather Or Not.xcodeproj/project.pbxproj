@@ -69,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B056C692100FA3700BF8308 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2BAAAACA20CDB32300D5277B /* ForecastManager.swift */,
+				2B6E7F2D20E40DB500EE144E /* FavouriteManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		2B2F764920CD9CCE001735D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,13 +135,12 @@
 		2BAAAAC920CDAE4A00D5277B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2B056C692100FA3700BF8308 /* Managers */,
 				2B2F764720CD89D2001735D8 /* CityTableViewController.swift */,
 				2BAAAAC720CDACEC00D5277B /* TimeTableViewController.swift */,
 				2B3395CB20CE571700524904 /* CurrentForecastTableViewController.swift */,
 				2B9E951420D1CC4C00C5EDEB /* DayForecastTableViewController.swift */,
 				2BD49F8420D3337D004E6138 /* SevenDayTableViewController.swift */,
-				2BAAAACA20CDB32300D5277B /* ForecastManager.swift */,
-				2B6E7F2D20E40DB500EE144E /* FavouriteManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

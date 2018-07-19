@@ -10,6 +10,7 @@ class DayForecastTableViewController: UITableViewController {
     
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var weatherImageLabel: UIImageView!
     @IBOutlet weak var highTemperatureLabel: UILabel!
     @IBOutlet weak var lowTemperatureLabel: UILabel!
@@ -64,6 +65,7 @@ extension DayForecastTableViewController {
                 DispatchQueue.main.async {
                     self.cityNameLabel.text = city.name
                     self.dateLabel.text = forecast.stringTime
+                    self.summaryLabel.text = forecast.summary
                     self.weatherImageLabel.image = UIImage(named: forecast.icon)
                     self.highTemperatureLabel.text = "High:\(forecast.temperatureHigh)°c"
                     self.lowTemperatureLabel.text = "Low:\(forecast.temperatureLow)°c"
